@@ -56,6 +56,7 @@ app.post("/api/login", async (req, res) => {
     if (!isValid)
       return res.status(401).json({ message: "Invalid credentials" });
 
+    // Correctly reference the JWT secret
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
